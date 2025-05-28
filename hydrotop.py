@@ -83,6 +83,10 @@ def main(stdscr):
             except curses.error:
                 pass
             stdscr.refresh()
+            # Verifica se o usuário pressionou 'q' para sair
+            key = stdscr.getch()
+            if key == ord('q'):
+                break
             time.sleep(1.0)
             continue
 
