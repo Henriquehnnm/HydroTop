@@ -30,7 +30,7 @@ H  = '─'
 V  = '│'
 
 # Minimal terminal dimensions
-MIN_WIDTH = 75
+MIN_WIDTH = 80
 MIN_HEIGHT = 30
 
 # Draw a rectangular box at (y,x) with given h,w, safely
