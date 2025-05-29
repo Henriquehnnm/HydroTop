@@ -26,6 +26,8 @@ Hydrotop é um monitor de sistema para terminal, escrito em Python, que exibe em
 *   Biblioteca `psutil` (para coleta das métricas do sistema)
 *   Terminal compatível com `curses` (Linux, macOS, WSL)
 
+> **Atenção:** Suporte oficial apenas para Linux, macOS e WSL. Usuários Windows podem tentar rodar instalando o pacote `windows-curses`, mas não há garantia de funcionamento ou suporte.
+
 Instalação do `psutil`:
 
 pip install psutil
@@ -53,7 +55,7 @@ Pressione `q` para sair da aplicação.
 
 ## Considerações
 
-Hydrotop está na versão alpha e pode sofrer alterações. Sugestões e contribuições são bem-vindas via issues ou pull requests no repositório.
+Hydrotop é considerado estável. Sugestões e contribuições são bem-vindas via issues ou pull requests no repositório.
 
 - - -
 

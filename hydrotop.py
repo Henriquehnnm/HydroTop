@@ -2,6 +2,7 @@
 import curses
 import psutil
 import time
+import signal
 
 TITLE = r"""
 
@@ -60,6 +61,9 @@ def main(stdscr):
     curses.use_default_colors()
     stdscr.nodelay(True)  # non-blocking input
 
+    # Flag para controle de saída
+    should_exit = [False]
+
     # init color pairs
     curses.init_pair(1, curses.COLOR_GREEN, -1)
     curses.init_pair(2, curses.COLOR_RED, -1)
@@ -71,21 +75,28 @@ def main(stdscr):
     last_net = psutil.net_io_counters()
     last_time = time.time()
 
+    # Permitir sair com Ctrl+C
+    def handle_sigint(sig, frame):
+        should_exit[0] = True
+    signal.signal(signal.SIGINT, handle_sigint)
+
     while True:
+        if should_exit[0]:
+            break
         stdscr.erase()
         h, w = stdscr.getmaxyx()
 
         # Check minimal size
         if h < MIN_HEIGHT or w < MIN_WIDTH:
-            msg = f"Resize terminal to at least {MIN_WIDTH}x{MIN_HEIGHT}"
+            msg = f"Resolução atual: {w}x{h} | Mínima: {MIN_WIDTH}x{MIN_HEIGHT}"
             try:
                 stdscr.addstr(h//2, max(0, (w - len(msg))//2), msg, curses.color_pair(2) | curses.A_BOLD)
             except curses.error:
                 pass
             stdscr.refresh()
-            # Verifica se o usuário pressionou 'q' para sair
+            # Verifica se o usuário pressionou 'q', Esc ou Ctrl+C para sair
             key = stdscr.getch()
-            if key == ord('q'):
+            if key == ord('q') or key == 27:
                 break
             time.sleep(1.0)
             continue
@@ -172,7 +183,8 @@ def main(stdscr):
         # Delay for update
         time.sleep(1.0)
         # non-blocking key check
-        if stdscr.getch() == ord('q'):
+        key = stdscr.getch()
+        if key == ord('q') or key == 27:
             break
 
 if __name__ == '__main__':
