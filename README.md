@@ -1,5 +1,5 @@
   <p class="center">
-    <img src="https://capsule-render.vercel.app/api?type=waving&color=8BE9FD&height=220&section=header&text=Hydrotop&fontSize=40&fontColor=F8F8F2" alt="Hydrotop Header" />
+    <img src="https://capsule-render.vercel.app/api?type=waving&color=8BE9FD&height=220&section=header&text=Hydrotop&fontSize=40&fontColor=F8F8F2" alt="Header" />
   </p>
 Hydrotop é um monitor de sistema para terminal, escrito em Python, que exibe em tempo real métricas essenciais de hardware e processos, com uma interface TUI (Text User Interface) estilizada utilizando `curses`.
 
