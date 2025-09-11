@@ -1,67 +1,93 @@
-<p class="center">
-    <img src="https://capsule-render.vercel.app/api?type=waving&color=8BE9FD&height=220&section=header&text=Hydrotop&fontSize=40&fontColor=F8F8F2" alt="Header" />
-  </p>
-Hydrotop é um monitor de sistema para terminal, escrito em Python, que exibe em tempo real métricas essenciais de hardware e processos, com uma interface TUI (Text User Interface) estilizada utilizando `curses`.
+<h1 align="center">HydroTop</h1>
 
+<p align="center">
+  <b>HydroTop</b> is a modern, real-time system monitor for the terminal, written in Python.<br>
+  It displays essential hardware metrics and process information through a stylish Text User Interface (TUI) powered by <code>curses</code>.<br>
+  HydroTop brings together clarity, aesthetics, and performance monitoring into a single, easy-to-use tool.
+</p>
 
+---
 
-## Funcionalidades
+## Features
 
-*   Monitoramento de uso de CPU, memória RAM e disco.
-*   Visualização da taxa de transferência de rede (download e upload).
-*   Exibição dos processos mais consumidores de CPU.
-*   Interface com caixas desenhadas em ASCII e uso de símbolos Nerd Fonts.
-*   Atualização dinâmica a cada segundo.
-*   Suporte a redimensionamento mínimo do terminal.
+- **CPU, Memory, and Disk Monitoring:**  
+  View real-time usage statistics of your system's CPU, RAM, and disk.
+- **Network Throughput Display:**  
+  Monitor current download and upload speeds.
+- **Top Resource-Consuming Processes:**  
+  Instantly see which processes are using the most CPU.
+- **Elegant TUI with ASCII Boxes & Nerd Font Icons:**  
+  Visually appealing interface with box-drawing characters and Nerd Font symbols for intuitive status visualization.
+- **Live Updates:**  
+  All metrics refresh every second for up-to-date monitoring.
+- **Responsive Design:**  
+  Auto-detects terminal resizing and provides feedback if the window is too small.
 
-- - -
+---
 
 ## Preview
 
-![Screenshot](screenshot.png)
+<p align="center">
+  <img src="screenshot.png" alt="HydroTop Screenshot" width="700"/>
+</p>
 
-## Requisitos
+---
 
-*   Python 3.6 ou superior
-*   Biblioteca `psutil` (para coleta das métricas do sistema)
-*   Terminal compatível com `curses` (Linux, macOS, WSL)
+## Requirements
 
-> **Atenção:** Suporte oficial apenas para Linux, macOS e WSL. Usuários Windows podem tentar rodar instalando o pacote `windows-curses`, mas não há garantia de funcionamento ou suporte.
+- **Python**: Version 3.6 or higher
+- **psutil**: For system metrics collection
+- **curses**: Terminal interface (native on Linux/macOS/WSL)
 
-Instalação do `psutil`:
+> **Note:** Officially supported on Linux, macOS, and WSL.  
+> Windows users may try running HydroTop with the `windows-curses` package, but compatibility and support are **not guaranteed**.
 
+### Install dependencies:
+
+```bash
 pip install psutil
+```
+If on Windows:
+```bash
+pip install windows-curses
+```
 
-- - -
+---
 
-## Uso
+## Usage
 
-Execute o script diretamente pelo terminal:
+Run the script directly from your terminal:
 
+```bash
 python3 hydrotop.py
+```
 
-Pressione `q` para sair da aplicação.
+- Press `q`, <kbd>Esc</kbd>, or <kbd>Ctrl+C</kbd> to exit HydroTop at any time.
 
-- - -
+---
 
-## Estrutura do Código
+## Code Structure
 
-*   Uso da biblioteca `curses` para criar a interface interativa.
-*   Funções para desenhar caixas e barras de progresso coloridas.
-*   Loop principal que atualiza as métricas em tempo real.
-*   Tratamento para evitar erros ao desenhar em terminais pequenos.
+- **Interactive Interface:**  
+  Built using the `curses` library for smooth and responsive TUI.
+- **Drawing Utilities:**  
+  Functions for rendering boxes and colored progress bars.
+- **Metrics Loop:**  
+  Main event loop gathers and updates system data every second.
+- **Error Handling:**  
+  Gracefully manages drawing errors on small terminals.
+- **Keyboard Controls:**  
+  Quick exit via keyboard shortcuts for convenience.
 
-- - -
+---
 
-## Considerações
+## Contributing
 
-Hydrotop é considerado estável. Sugestões e contribuições são bem-vindas via issues ou pull requests no repositório.
+HydroTop is considered stable and open to improvements.  
+Contributions and suggestions are welcome via [issues](https://github.com/Henriquehnnm/HydroTop/issues) or [pull requests](https://github.com/Henriquehnnm/HydroTop/pulls).
 
-- - -
+---
 
-## Contato
+## Contact
 
-Para dúvidas ou sugestões, abra uma issue ou entre em contato via email.
-  <p class="center">
-    <img src="https://capsule-render.vercel.app/api?type=waving&color=8BE9FD&height=120&section=footer" alt="Hydrotop Footer" />
-  </p>
+For questions, bug reports, or feature requests, please [open an issue](https://github.com/Henriquehnnm/HydroTop/issues) or contact via email.
