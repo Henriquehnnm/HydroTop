@@ -61,7 +61,7 @@ def main(stdscr):
     curses.use_default_colors()
     stdscr.nodelay(True)  # non-blocking input
 
-    # Flag para controle de saída
+    # Flag to control exit
     should_exit = [False]
 
     # init color pairs
@@ -75,7 +75,7 @@ def main(stdscr):
     last_net = psutil.net_io_counters()
     last_time = time.time()
 
-    # Permitir sair com Ctrl+C
+    # Allow exiting with Ctrl+C
     def handle_sigint(sig, frame):
         should_exit[0] = True
     signal.signal(signal.SIGINT, handle_sigint)
@@ -88,13 +88,13 @@ def main(stdscr):
 
         # Check minimal size
         if h < MIN_HEIGHT or w < MIN_WIDTH:
-            msg = f"Resolução atual: {w}x{h} | Mínima: {MIN_WIDTH}x{MIN_HEIGHT}"
+            msg = f"Current resolution: {w}x{h} | Minimum: {MIN_WIDTH}x{MIN_HEIGHT}"
             try:
                 stdscr.addstr(h//2, max(0, (w - len(msg))//2), msg, curses.color_pair(2) | curses.A_BOLD)
             except curses.error:
                 pass
             stdscr.refresh()
-            # Verifica se o usuário pressionou 'q', Esc ou Ctrl+C para sair
+            # Check if the user pressed 'q', Esc or Ctrl+C to exit
             key = stdscr.getch()
             if key == ord('q') or key == 27:
                 break
@@ -103,7 +103,7 @@ def main(stdscr):
 
         # Calculate box sizes
         box_w = min(80, w-4)
-        metrics_h = len(TITLE.strip().splitlines()) + 10  # title + barras + linha de rede
+        metrics_h = len(TITLE.strip().splitlines()) + 10  # title + bars + net line
         proc_h = 1 + 5 + 2
         total_h = metrics_h + proc_h + 3
         start_y = max((h-total_h)//2, 1)
@@ -145,7 +145,7 @@ def main(stdscr):
             pass
         draw_bar(stdscr, start_y+metrics_h-4, inner_x+20, inner_w-20, disk, 1 if disk<70 else 2)
 
-        # NET (agora dentro da caixa de métricas)
+        # NET (now inside the metrics box)
         now = time.time()
         net = psutil.net_io_counters()
         elapsed = now - last_time
