@@ -48,7 +48,7 @@ def draw_box(stdscr, y, x, h, w):
 # Draw a colored bar
 def draw_bar(stdscr, y, x, width, percent, color):
     fill = int(width * percent / 100)
-    bar = '█'*fill + '░'*(width-fill)
+    bar = '█'*fill + ''*(width-fill)
     try:
         stdscr.addstr(y, x, bar, curses.color_pair(color))
     except curses.error:
